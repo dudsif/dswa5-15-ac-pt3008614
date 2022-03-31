@@ -16,8 +16,7 @@ angular.module('ifsp').controller('CursoController',
             );
 
         } else { $scope.curso = new Curso(); }
-
-        /*
+        
                 $scope.salva = function() {
                     $scope.curso.$save()
                         .then(function() {
@@ -29,6 +28,4 @@ angular.module('ifsp').controller('CursoController',
                             $scope.mensagem = { texto: 'Não foi possível salvar' };
                         });
                 };
-        */
-
     });
