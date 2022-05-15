@@ -1,5 +1,5 @@
 var passport = require('passport');
-var GitHubStrategy = require('passport-github').Strategy;
+var GitHubStrategy = require('passport-github2').Strategy;
 var mongoose = require('mongoose');
 
 module.exports = function() {
@@ -8,7 +8,7 @@ module.exports = function() {
     passport.use(new GitHubStrategy({
         clientID: '65b98d222617fc427b9b',
         clientSecret: '7b96f624538f76f1dd42814d1a614b4458e33725',
-        callbackURL: 'http://localhost:3000/auth/github/callback'
+        callbackURL: 'http://localhost:5000/auth/github/callback'
     }, function(accessToken, refreshToken, profile, done) {
         Usuario.findOrCreate(
             { "login" : profile.username},
