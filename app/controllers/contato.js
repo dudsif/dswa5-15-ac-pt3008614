@@ -1,6 +1,7 @@
 module.exports = function(app) {
     var Contato = app.models.contato;
     var controller = {};
+
     controller.listaContatos = function(req, res) {
         Contato.find().exec().then(
             function(contatos) {
@@ -59,6 +60,6 @@ module.exports = function(app) {
                 });
         }
     };
-    
+
     return controller;
 };

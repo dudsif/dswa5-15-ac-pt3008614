@@ -1,9 +1,11 @@
 module.exports = function(app) {
     var controller = app.controllers.contato;
+    var verificaAutenticacao = require('../../contatooh/config/auth');
+
     app.route('/contatos')
-        .get(controller.listaContatos)
-        .post(controller.salvaContato);
+        .get(verificaAutenticacao, controller.listaContatos)
+        .post(verificaAutenticacao, controller.salvaContato);
     app.route('/contatos/:id')
-        .get(controller.obtemContato)
-        .delete(controller.removeContato);
+        .get(verificaAutenticacao, controller.obtemContato)
+        .delete(verificaAutenticacao, controller.removeContato);
 };
