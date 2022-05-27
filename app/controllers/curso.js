@@ -1,4 +1,5 @@
 module.exports = function(app) {
+    var sanitize = require('mongo-sanitize');
     var Curso = app.models.curso;
     var controller = {};
     controller.listaCursos = function(req, res) {
@@ -13,7 +14,7 @@ module.exports = function(app) {
     };
 
     controller.obtemCurso = function(req, res) {
-        var _id = req.params.id;
+        var _id = sanitize(req.params.id);
         Curso.findById(_id).exec().then(
           function(curso) {
             if (!curso) throw new Error("Curso não encontrado");
@@ -27,7 +28,7 @@ module.exports = function(app) {
     };
 
     controller.removeCurso = function(req, res) {
-        var _id = req.params.id;
+        var _id = sanitize(req.params.id);
         Curso.deleteOne({ "_id": _id }).exec().then(
         function() {
             res.end();
